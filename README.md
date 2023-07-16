@@ -1,4 +1,4 @@
-# text-generaion-webui-docker
+# koboldcpp-docker
 
 Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.35 found here: https://github.com/LostRuins/koboldcpp.git
 
