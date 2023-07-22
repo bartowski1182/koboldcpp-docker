@@ -19,6 +19,8 @@ docker build -t koboldcpp-docker:latest .
 
 # Running the image with docker run
 
+(add -d for detached)
+
 ```sh
 docker run --gpus all -p 80:80 -v /media/teamgroup/models:/app/models koboldcpp-docker:latest --model /app/models/wizardlm-13b-v1.1.ggmlv3.q4_1.bin --port 80 --threads 6 --usecublas --gpulayers 43
 ```
@@ -34,3 +36,36 @@ Feel free to modify both to fit your needs, for example I use lowvram for bigger
 Pre-built images are provided at https://hub.docker.com/r/noneabove1182/koboldcpp-gpu
 
 Follow the same command as above except with noneabove1182/koboldcpp-gpu:(version)
+
+# Quirks and features
+
+If you're having trouble saving info across sessions, try adding a docker volume (which may have to be removed between updates)
+
+add:
+
+```
+      - kobold:/koboldcpp
+```
+
+to the volumes section of docker-compose.yml and
+
+```
+volumes:
+  kobold:
+```
+
+at the bottom
+
+or for docker run:
+
+```
+docker volume create kobold
+```
+
+and add
+
+```
+-v kobold:/koboldcpp
+```
+
+to your run command (will make these instructions better soontm)
