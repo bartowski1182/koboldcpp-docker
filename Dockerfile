@@ -15,7 +15,7 @@ RUN mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/v
 RUN conda create -y -n koboldcpp python=3.10.9
 SHELL ["conda", "run", "-n", "koboldcpp", "/bin/bash", "-c"]
 
-RUN git clone https://github.com/henk717/koboldcpp.git --branch 1.35 ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.36 ./
 
 RUN pip3 install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt \
     && make LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 LLAMA_CUBLAS=1
