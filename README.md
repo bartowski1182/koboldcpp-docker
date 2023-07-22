@@ -1,8 +1,6 @@
 # koboldcpp-docker
 
-Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.35 found here: https://github.com/LostRuins/koboldcpp.git
-
-(though currently using https://github.com/henk717/koboldcpp.git for CUDA support and tagged as 1.35 experimental on my dockerhub)
+Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.36 found here: https://github.com/LostRuins/koboldcpp.git
 
 # Build instructions
 
