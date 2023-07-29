@@ -1,6 +1,10 @@
+## This work is not official
+
+I am providing this work as a helpful hand to people who are looking for a simple, easy to build docker image with GPU support, this is not official in any capacity, and any issues arising from this docker image should be posted here and not on their own repo or discord.
+
 # koboldcpp-docker
 
-Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.36 found here: https://github.com/LostRuins/koboldcpp.git
+Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.37.1a found here: https://github.com/LostRuins/koboldcpp.git
 
 # Build instructions
 
