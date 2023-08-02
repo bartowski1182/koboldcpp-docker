@@ -2,7 +2,7 @@
 FROM nvidia/cuda:11.8.0-devel-ubuntu22.04 as builder
 
 # Using conda to transfer python env from builder to runtime later
-COPY --from=continuumio/miniconda3:4.12.0 /opt/conda /opt/conda
+COPY --from=continuumio/miniconda3:23.5.2-0 /opt/conda /opt/conda
 ENV PATH=/opt/conda/bin:$PATH
 
 WORKDIR /koboldcpp
@@ -19,7 +19,7 @@ RUN conda create -y -n koboldcpp python=3.10.9
 SHELL ["conda", "run", "-n", "koboldcpp", "/bin/bash", "-c"]
 
 # Pulling latest koboldcpp branch
-RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.37.1a ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.38 ./
 
 # install requirements and build with GPU support
 RUN pip3 install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt \
