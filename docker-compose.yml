@@ -30,7 +30,7 @@ services:
         "6",
         "--usemlock",
         "--usecublas",
-        "lowvram",
+        "0",
         "--gpulayers",
-        "20"
+        "43"
       ]
