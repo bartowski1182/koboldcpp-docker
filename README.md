@@ -4,7 +4,7 @@ I am providing this work as a helpful hand to people who are looking for a simpl
 
 # koboldcpp-docker
 
-Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.38 found here: https://github.com/LostRuins/koboldcpp.git
+Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.39.1 found here: https://github.com/LostRuins/koboldcpp.git
 
 # Build instructions
 
