@@ -23,6 +23,8 @@ cd koboldcpp-docker
 docker build -t koboldcpp-docker:latest .
 ```
 
+(note, if you don't require CUDA you can instead pass -f Dockerfile_cpu to build without CUDA support, and you can use the docker-compose.yml.for-cpu from ./alternative-compose/)
+
 # Running the image with docker run
 
 (add -d for detached)
@@ -33,9 +35,11 @@ docker run --gpus all -p 80:80 -v /media/teamgroup/models:/app/models koboldcpp-
 
 # Running the image with docker compose
 
-A docker-compose.yaml file has been provided, as well as a .env file that I use for setting my model dir and the model name I'd like to load in with
+A docker-compose.yml file has been provided, as well as a .env file that I use for setting my model dir and the model name I'd like to load in with
 
 Feel free to modify both to fit your needs, for example I use lowvram for bigger models but remove it for smaller ones but if you don't you can remove it
+
+I've also provided in alternative-compose a docker-compose.yml.for-cpu for the default CPU arguments
 
 # Pre-built image
 
@@ -43,35 +47,22 @@ Pre-built images are provided at https://hub.docker.com/r/noneabove1182/koboldcp
 
 Follow the same command as above except with noneabove1182/koboldcpp-gpu:(version)
 
+CPU version provided as well but I'm slower at updating it: https://hub.docker.com/r/noneabove1182/koboldcpp-cpu
+
 # Quirks and features
 
-If you're having trouble saving info across sessions, try adding a docker volume (which may have to be removed between updates)
+If you're having trouble saving info across sessions, try adding a docker volume. See alternative-compose folder for the one with volumes.
 
-add:
+I've had some issues in the past keeping the volume between versions, so try 'docker volume rm kobold' if you have some weird behaviour as a first troubleshooting step.
 
-```
-      - kobold:/koboldcpp
-```
-
-to the volumes section of docker-compose.yml and
-
-```
-volumes:
-  kobold:
-```
-
-at the bottom
-
-or for docker run:
+for docker run:
 
 ```
 docker volume create kobold
 ```
 
-and add
+and the full command is now:
 
+```sh
+docker run --gpus all -p 80:80 -v /media/teamgroup/models:/app/models koboldcpp-docker:latest -v kobold:/koboldcpp --model /app/models/wizardlm-13b-v1.1.ggmlv3.q4_1.bin --port 80 --threads 6 --usecublas --gpulayers 43
 ```
--v kobold:/koboldcpp
-```
-
-to your run command (will make these instructions better soontm)

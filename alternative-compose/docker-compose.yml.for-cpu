@@ -7,17 +7,10 @@ services:
       - '${MODEL_DIR}:/app/models'
     ports:
       - '7860:80'
-    image: 'noneabove1182/koboldcpp-gpu:latest'
+    image: 'noneabove1182/koboldcpp-cpu:latest'
     ulimits:
       memlock: -1
     mem_limit: 50gb
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
     command:
       [
         "python3",
@@ -28,9 +21,5 @@ services:
         "80",
         "--threads",
         "6",
-        "--usemlock",
-        "--usecublas",
-        "0",
-        "--gpulayers",
-        "18"
+        "--usemlock"
       ]

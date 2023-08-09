@@ -5,6 +5,7 @@ services:
     restart: always
     volumes:
       - '${MODEL_DIR}:/app/models'
+      - kobold:/koboldcpp
     ports:
       - '7860:80'
     image: 'noneabove1182/koboldcpp-gpu:latest'
@@ -32,5 +33,9 @@ services:
         "--usecublas",
         "0",
         "--gpulayers",
-        "18"
+        "18",
+        "--forceversion",
+        "405"
       ]
+volumes:
+  kobold:
