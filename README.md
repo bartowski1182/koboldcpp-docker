@@ -6,7 +6,7 @@ Requires nvidia-driver 535.86.05, installed with apt-get install -y --allow-down
 
 # koboldcpp-docker
 
-Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.39.1 found here: https://github.com/LostRuins/koboldcpp.git
+Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.40 found here: https://github.com/LostRuins/koboldcpp.git
 
 # Build instructions
 

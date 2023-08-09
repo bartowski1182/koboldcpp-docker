@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y \
 WORKDIR /koboldcpp
 
 # Pulling latest koboldcpp branch and installing requirements
-RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.39.1 ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.40 ./
 
 RUN pip3 install -r requirements.txt
 
@@ -31,6 +31,8 @@ FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 # update image and install necessary packages
 RUN apt-get update && apt-get upgrade -y \
     && apt-get -y install python3 \
+    ocl-icd-opencl-dev opencl-headers clinfo \
+    libclblast-dev libopenblas-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy the git repo from builder

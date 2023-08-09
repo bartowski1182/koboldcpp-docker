@@ -29,8 +29,11 @@ services:
         "--threads",
         "6",
         "--usemlock",
-        "--usecublas",
-        "0",
-        "--gpulayers",
-        "43"
+#        "--useclblast",
+#        "0",
+#        "1",
+        #"--usecublas",
+        #"0",
+        #"--gpulayers",
+        #"43"
       ]
