@@ -39,7 +39,7 @@ A docker-compose.yml file has been provided, as well as a .env file that I use f
 
 Feel free to modify both to fit your needs, for example I use lowvram for bigger models but remove it for smaller ones but if you don't you can remove it
 
-I've also provided in alternative-compose a docker-compose.yml.for-cpu for the default CPU arguments
+I've also provided an alternative-compose a docker-compose.yml.for-cpu for the default CPU arguments
 
 # Pre-built image
 
