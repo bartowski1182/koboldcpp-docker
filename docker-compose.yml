@@ -32,5 +32,5 @@ services:
         "--usecublas",
         "0",
         "--gpulayers",
-        "18"
+        "16"
       ]
