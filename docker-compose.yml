@@ -26,11 +26,13 @@ services:
         "/app/models/${MODEL}",
         "--port",
         "80",
+        "--blasthreads",
+        "5",
         "--threads",
-        "6",
+        "7",
         "--usemlock",
         "--usecublas",
         "0",
         "--gpulayers",
-        "16"
+        "22"
       ]

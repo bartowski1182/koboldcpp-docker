@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y \
 WORKDIR /koboldcpp
 
 # Pulling latest koboldcpp branch and installing requirements
-RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.40.1 ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.44 ./
 
 RUN pip3 install -r requirements.txt
 
