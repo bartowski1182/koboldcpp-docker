@@ -1,5 +1,5 @@
 # cuda devel image for base, best build compatibility
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04 as builder
+FROM nvidia/cuda:12.1.1-devel-ubuntu22.04 as builder
 
 # Update base image and install dependencies
 RUN apt-get update && apt-get upgrade -y \
@@ -11,8 +11,10 @@ RUN apt-get update && apt-get upgrade -y \
 
 WORKDIR /koboldcpp
 
+ARG clone_arg
+
 # Pulling latest koboldcpp branch and installing requirements
-RUN git clone https://github.com/LostRuins/koboldcpp.git --branch v1.44 ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git $clone_arg ./
 
 RUN pip3 install -r requirements.txt
 
@@ -26,7 +28,7 @@ ENV LLAMA_OPENBLAS=1
 RUN make
 
 # Using runtime for smaller final image
-FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
+FROM noneabove1182/nvidia-runtime-docker:12.1.1-runtime-ubuntu22.04
 
 # update image and install necessary packages
 RUN apt-get update && apt-get upgrade -y \
