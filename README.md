@@ -2,11 +2,13 @@
 
 I am providing this work as a helpful hand to people who are looking for a simple, easy to build docker image with GPU support, this is not official in any capacity, and any issues arising from this docker image should be posted here and not on their own repo or discord.
 
-Requires nvidia-driver 535.86.05, installed with apt-get install -y --allow-downgrades nvidia-driver-535/jammy-updates
+
+Note: this step may no longer be necessary, it was a workaround for a broken driver version
+Requires nvidia-driver 535.113.01, installed with apt-get install -y --allow-downgrades nvidia-driver-535/jammy-updates
 
 # koboldcpp-docker
 
-Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.40 found here: https://github.com/LostRuins/koboldcpp.git
+Docker images and configuration to run koboldcpp with GPU, currently updated to release v1.47.2 found here: https://github.com/LostRuins/koboldcpp.git
 
 # Build instructions
 
