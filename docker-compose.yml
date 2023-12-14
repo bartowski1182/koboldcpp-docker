@@ -27,12 +27,12 @@ services:
         "--port",
         "80",
         "--blasthreads",
-        "5",
+        "${BLASTHREADS}",
         "--threads",
-        "7",
+        "${THREADS}",
         "--usemlock",
         "--usecublas",
         "0",
         "--gpulayers",
-        "100"
+        "${GPULAYERS}"
       ]

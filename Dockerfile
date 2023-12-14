@@ -9,17 +9,17 @@ RUN apt-get update && apt-get upgrade -y \
     libclblast-dev libopenblas-dev \
     && mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-WORKDIR /koboldcpp
-
 ARG clone_arg
 
 # Pulling latest koboldcpp branch and installing requirements
-RUN git clone https://github.com/LostRuins/koboldcpp.git $clone_arg ./
+RUN git clone https://github.com/LostRuins/koboldcpp.git $clone_arg
+
+WORKDIR /koboldcpp
 
 RUN pip3 install -r requirements.txt
 
 # Setting up env variables
-ENV CUDA_DOCKER_ARCH=all
+ENV LLAMA_PORTABLE=1
 ENV LLAMA_CUBLAS=1
 ENV LLAMA_CLBLAST=1
 ENV LLAMA_OPENBLAS=1
@@ -28,7 +28,7 @@ ENV LLAMA_OPENBLAS=1
 RUN make
 
 # Using runtime for smaller final image
-FROM noneabove1182/nvidia-runtime-docker:12.1.1-runtime-ubuntu22.04
+FROM noneabove1182/nvidia-runtime-docker:12.1.1-runtime-ubuntu22.04-535.129
 
 # update image and install necessary packages
 RUN apt-get update && apt-get upgrade -y \
