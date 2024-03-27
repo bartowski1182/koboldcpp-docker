@@ -1,18 +1,25 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10-slim
-
-# Set the working directory
-WORKDIR /koboldcpp
+FROM python:3.11.8-slim
 
 # Install git
 RUN apt-get update && apt-get install -y git \
     build-essential \
     libclblast-dev \
-    libopenblas-dev \
-    && git clone https://github.com/LostRuins/koboldcpp.git --branch v1.43 ./ \
+    libopenblas-dev
+
+ARG clone_arg
+ARG commit
+
+RUN git clone https://github.com/LostRuins/koboldcpp.git $clone_arg \
+    && cd koboldcpp \
+    && if [ -n "$commit" ]; then git checkout $commit; fi \
     && pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt \
-    && make LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1 \
-    && apt-get clean s&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && make LLAMA_OPENBLAS=1 LLAMA_CLBLAST=1
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Set the working directory
+WORKDIR /koboldcpp
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
